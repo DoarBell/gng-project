@@ -1,0 +1,187 @@
+:root{
+  --navy-dark:#0a1220;
+  --navy-mid:#16233c;
+  --navy-light:#2a3f63;
+  --text-light:#e7ebf2;
+  --text-muted:#b7c1d6;
+  --rule:#3a4a6b;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+  background:var(--navy-dark);
+  color:var(--text-light);
+}
+
+/* ---------- Header ---------- */
+header{
+  background:
+    radial-gradient(circle at 30% 0%, var(--navy-light) 0%, transparent 55%),
+    linear-gradient(180deg, var(--navy-mid) 0%, var(--navy-dark) 100%);
+  padding:36px 6% 20px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+  text-align:center;
+}
+.brand h1{
+  font-weight:300;
+  font-size:clamp(28px,4.5vw,48px);
+  letter-spacing:.5px;
+  color:#f2f4f8;
+}
+.brand .amp{
+  font-size:clamp(40px,6vw,64px);
+  color:#7c8aa8;
+  font-weight:300;
+  line-height:0;
+  margin:0 4px;
+}
+.brand .sub{
+  display:block;
+  font-size:clamp(16px,2vw,22px);
+  font-weight:300;
+  color:var(--text-light);
+  margin-top:4px;
+}
+
+nav{
+  margin-top:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  flex-wrap:wrap;
+}
+.flags{display:flex;gap:6px;margin-right:10px;}
+.flags span{font-size:20px;line-height:1;}
+nav a{
+  color:var(--text-light);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition:border-color .2s ease, color .2s ease;
+}
+nav a:hover, nav a:focus-visible{
+  color:#ffffff;
+  border-bottom-color:#5b6f96;
+}
+.nav-divider{
+  width:1px;height:16px;background:var(--rule);
+}
+header hr{
+  border:none;
+  border-top:1px solid var(--rule);
+  margin-top:26px;
+}
+
+/* ---------- Hero ---------- */
+main.hero{
+  display:grid;
+  grid-template-columns:minmax(220px,420px) 1fr;
+  gap:6%;
+  align-items:center;
+  padding:60px 6% 70px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.globe-wrap{display:flex;justify-content:center;}
+.globe-wrap svg{width:100%;max-width:320px;height:auto;color:#f4f6fa;opacity:.95;}
+
+.hero-copy h2{
+  font-size:clamp(24px,3vw,32px);
+  font-weight:400;
+  letter-spacing:.5px;
+  margin-bottom:18px;
+}
+.hero-copy .rule{
+  height:1px;
+  width:100%;
+  background:linear-gradient(90deg,var(--rule),transparent);
+  margin-bottom:22px;
+}
+.hero-copy p{
+  color:var(--text-muted);
+  line-height:1.7;
+  font-size:15px;
+  margin-bottom:16px;
+  max-width:70ch;
+}
+.read-more{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  background:none;
+  border:none;
+  color:var(--text-light);
+  font-size:13px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-weight:600;
+}
+.read-more .circle{
+  width:26px;height:26px;
+  border-radius:50%;
+  border:1px solid var(--text-light);
+  display:flex;align-items:center;justify-content:center;
+}
+.read-more:hover .circle{background:var(--text-light);color:var(--navy-dark);}
+
+/* ---------- Footer ---------- */
+footer{
+  background:#05080f;
+  border-top:1px solid var(--rule);
+  padding:34px 6%;
+}
+.footer-grid{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:28px;
+}
+.footer-item{display:flex;gap:14px;}
+.footer-item .icon{
+  flex-shrink:0;
+  width:22px;height:22px;
+  color:#c9d2e3;
+}
+.footer-item h3{
+  font-size:13px;
+  text-transform:none;
+  font-weight:600;
+  margin-bottom:6px;
+  color:#f2f4f8;
+}
+.footer-item p, .footer-item a{
+  font-size:13px;
+  color:var(--text-muted);
+  line-height:1.6;
+  text-decoration:none;
+}
+.footer-item a:hover{color:#fff;}
+.socials{display:flex;gap:12px;margin-top:10px;}
+.socials a{
+  width:26px;height:26px;
+  border:1px solid var(--rule);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);
+}
+.socials a:hover{color:#fff;border-color:#fff;}
+
+@media (max-width:720px){
+  main.hero{grid-template-columns:1fr;text-align:center;}
+  .globe-wrap svg{max-width:220px;}
+  .hero-copy p{margin-left:auto;margin-right:auto;}
+}
