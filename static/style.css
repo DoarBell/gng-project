@@ -262,11 +262,11 @@ footer{
   main.hero{
     grid-template-columns:1fr;
     text-align:center;
-    width: 100dvw;
+    width: 100%;
   }
 
-  .globe-wrap svg{
-    max-width:220px;
+  .globe-wrap img{
+    max-width: 100dvw;
   }
 
   .hero-copy p{
