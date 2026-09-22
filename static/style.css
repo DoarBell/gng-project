@@ -103,6 +103,10 @@ nav a:focus-visible{
   background:var(--rule);
 }
 
+p{
+  text-align: justify;
+}
+
 header hr{
   border:none;
   border-top:1px solid var(--rule);

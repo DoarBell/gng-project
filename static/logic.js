@@ -1,19 +1,24 @@
+let currentLang = localStorage.getItem('lang') || 'es';
+
 const translations = {
     es: {
         index_title: "Compromiso con el cliente",
         index_info1: "En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.",
         index_info2: "Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.",
-        index_more: `Leer más <span class="circle">▶</span>`
+        index_more: `Leer más <span class="circle">▶</span>`,
+        index_info3: "This is supposed to be hidden",
     },
     en:{
         index_title: "CLIENT COMMITMENT:",
         index_info1: "At García Naranjo, González y Asociados, S.C., we recognize the immense value of our clients to the present and future success of our firm. Our main commitment to them, is the recognition and understanding of their specific developmental needs and requirements.",
         index_info2: "Our professional ethics always commit us to professional conduct of absolute integrity, in the pursuance of goals and purposes that we and our clients mutually establish and agree upon.",
         index_more: `Read more <span class="circle">▶</span>`,
+        index_info3: "This is still supposed to be hidden",
     },
 };
 
 function setLang(lang) {
+    currentLang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -23,27 +28,47 @@ function setLang(lang) {
     localStorage.setItem('lang', lang);
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('main-header').innerHTML = `
-    <div class="brand">
-      <h1>García Naranjo<span class="amp">&amp;</span>González
-        <span class="sub">Asociados, S.C.</span>
-      </h1>
-    </div>
+function toggleText(){
+    const moreText = document.getElementById("more-text");
+    const btnText = document.getElementById("more-btn");
+    if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+        btnText.innerHTML = translations[currentLang]["index_more"];
+    } else {
+        moreText.style.display = "none";
+        btnText.innerHTML = translations[currentLang]["index_more"];
+    }
+}
 
-    <nav>
-      <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
-      <div class="nav-divider"></div>
-      <a href="../index.html">Inicio</a>
-      <a href="../subpages/acerca.html">Acerca de</a>
-      <a href="../subpages/servicios.html">Servicios</a>
-      <a href="../subpages/oficinas.html">Oficinas</a>
-      <a href="../subpages/contactanos.html">Contacto</a>
-      <a href="../documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
-    </nav>
-    <hr>`;
-    document.getElementById('main-footer').innerHTML = `
-    <div class="footer-grid">
+document.addEventListener('DOMContentLoaded', () => {
+    const more = document.getElementById("more-text");
+    if (more) {
+        more.style.display = 'none';
+    }
+    const header = document.getElementById('main-header');
+    const footer = document.getElementById('main-footer');
+    if (header) {
+        header.innerHTML = `
+        <div class="brand">
+        <h1>García Naranjo<span class="amp">&amp;</span>González
+            <span class="sub">Asociados, S.C.</span>
+        </h1>
+        </div>
+
+        <nav>
+        <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
+        <div class="nav-divider"></div>
+        <a href="../index.html">Inicio</a>
+        <a href="../subpages/acerca.html">Acerca de</a>
+        <a href="../subpages/servicios.html">Servicios</a>
+        <a href="../subpages/oficinas.html">Oficinas</a>
+        <a href="../subpages/contactanos.html">Contacto</a>
+        <a href="../documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
+        </nav>
+        <hr>`;
+    }
+    if (footer) {
+        footer.innerHTML = `<div class="footer-grid">
       <div class="footer-item">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
         <div>
@@ -71,4 +96,5 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     </div>`
+    }
 });
