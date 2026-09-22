@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>GNG</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="static/style.css">
-    <script src="static/logic.js"></script>
-  </head>
-  <body>
-
-  <header id="main-header">
+document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('main-header').innerHTML = `
     <div class="brand">
       <h1>García Naranjo<span class="amp">&amp;</span>González
         <span class="sub">Asociados, S.C.</span>
@@ -22,30 +10,14 @@
       <div class="flags"><span>🇲🇽</span><span>🇺🇸</span></div>
       <div class="nav-divider"></div>
       <a href="#inicio">Inicio</a>
-      <a href="./acerca.html">Acerca de</a>
+      <a href="#acerca">Acerca de</a>
       <a href="#servicios">Servicios</a>
       <a href="#oficinas">Oficinas</a>
       <a href="#contacto">Contacto</a>
       <a href="#privacidad">Aviso de privacidad</a>
     </nav>
-    <hr>
-  </header>
-
-  <main class="hero">
-    <div class="globe-wrap">
-      <img src="static/globe.png" alt="Globo terráqueo" class="globe">
-    </div>
-
-    <div class="hero-copy">
-      <h2>Compromiso con el cliente</h2>
-      <div class="rule"></div>
-      <p>En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.</p>
-      <p>Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.</p>
-      <button class="read-more">Leer más <span class="circle">▶</span></button>
-    </div>
-  </main>
-
-  <footer id="main-footer">
+    <hr>`;
+    document.getElementById('main-footer').innerHTML = `
     <div class="footer-grid">
       <div class="footer-item">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -73,8 +45,5 @@
           </div>
         </div>
       </div>
-    </div>
-  </footer>
-
-  </body>
-</html>
+    </div>`
+})
