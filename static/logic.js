@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     <nav>
       <div class="flags"><span>🇲🇽</span><span>🇺🇸</span></div>
       <div class="nav-divider"></div>
-      <a href="#inicio">Inicio</a>
-      <a href="#acerca">Acerca de</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#oficinas">Oficinas</a>
-      <a href="#contacto">Contacto</a>
-      <a href="#privacidad">Aviso de privacidad</a>
+      <a href="index.html">Inicio</a>
+      <a href="acerca.html">Acerca de</a>
+      <a href="servicion.html">Servicios</a>
+      <a href="oficinas.html">Oficinas</a>
+      <a href="contactanos.html">Contacto</a>
+      <a href="privacidad.html">Aviso de privacidad</a>
     </nav>
     <hr>`;
     document.getElementById('main-footer').innerHTML = `
