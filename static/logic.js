@@ -1,4 +1,29 @@
-document.addEventListener('DOMContentLoaded', ()=>{
+const translations = {
+    es: {
+        index_title: "Compromiso con el cliente",
+        index_info1: "En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.",
+        index_info2: "Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.",
+        index_more: `Leer más <span class="circle">▶</span>`
+    },
+    en:{
+        index_title: "CLIENT COMMITMENT:",
+        index_info1: "At García Naranjo, González y Asociados, S.C., we recognize the immense value of our clients to the present and future success of our firm. Our main commitment to them, is the recognition and understanding of their specific developmental needs and requirements.",
+        index_info2: "Our professional ethics always commit us to professional conduct of absolute integrity, in the pursuance of goals and purposes that we and our clients mutually establish and agree upon.",
+        index_more: `Read more <span class="circle">▶</span>`,
+    },
+};
+
+function setLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            el.innerHTML=translations[lang][key];
+        }
+    });
+    localStorage.setItem('lang', lang);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('main-header').innerHTML = `
     <div class="brand">
       <h1>García Naranjo<span class="amp">&amp;</span>González
@@ -7,7 +32,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     </div>
 
     <nav>
-      <div class="flags"><a id="spanish">🇲🇽</a><a id="english">🇺🇸</a></div>
+      <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
       <div class="nav-divider"></div>
       <a href="index.html">Inicio</a>
       <a href="acerca.html">Acerca de</a>
@@ -46,4 +71,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
         </div>
       </div>
     </div>`
-})
+});
