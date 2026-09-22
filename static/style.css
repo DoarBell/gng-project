@@ -262,6 +262,7 @@ footer{
   main.hero{
     grid-template-columns:1fr;
     text-align:center;
+    width: 100dvw;
   }
 
   .globe-wrap svg{
