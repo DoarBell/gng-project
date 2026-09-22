@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     </div>
 
     <nav>
-      <div class="flags"><span>🇲🇽</span><span>🇺🇸</span></div>
+      <div class="flags"><a id="spanish">🇲🇽</a><a id="english">🇺🇸</a></div>
       <div class="nav-divider"></div>
       <a href="index.html">Inicio</a>
       <a href="acerca.html">Acerca de</a>
-      <a href="servicion.html">Servicios</a>
+      <a href="servicios.html">Servicios</a>
       <a href="oficinas.html">Oficinas</a>
       <a href="contactanos.html">Contacto</a>
-      <a href="privacidad.html">Aviso de privacidad</a>
+      <a href="documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
     </nav>
     <hr>`;
     document.getElementById('main-footer').innerHTML = `
