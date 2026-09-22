@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     <nav>
       <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
       <div class="nav-divider"></div>
-      <a href="index.html">Inicio</a>
-      <a href="acerca.html">Acerca de</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="oficinas.html">Oficinas</a>
-      <a href="contactanos.html">Contacto</a>
-      <a href="documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
+      <a href="../index.html">Inicio</a>
+      <a href="../subpages/acerca.html">Acerca de</a>
+      <a href="../subpages/servicios.html">Servicios</a>
+      <a href="../subpages/oficinas.html">Oficinas</a>
+      <a href="../subpages/contactanos.html">Contacto</a>
+      <a href="../documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
     </nav>
     <hr>`;
     document.getElementById('main-footer').innerHTML = `
