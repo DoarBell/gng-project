@@ -66,9 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (header) {
         header.innerHTML = `
         <div class="brand">
-        <h1>García Naranjo<span class="amp">&amp;</span>González
-            <span class="sub">Asociados, S.C.</span>
-        </h1>
+            <img src="../images/gng_logo_azul.png" alt="gnglogo">
         </div>
 
         <nav>
