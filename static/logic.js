@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <nav>
-        <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
+        <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><p> </p><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
         <div class="nav-divider"></div>
         <a data-i18n="layout_inicio" href="../index.html">Inicio</a>
         <a data-i18n="layout_acerca" href="../subpages/acerca.html">Acerca de</a>
