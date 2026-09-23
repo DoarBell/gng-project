@@ -14,16 +14,14 @@
 }
 
 body{
-  background:var(--navy-dark);
+  background-image: url("../images/background_img.jpg");
+  background-size: cover;
   color:var(--text-light);
   font-family:"Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 /* ---------- Header ---------- */
 header{
-  background:
-    radial-gradient(circle at 30% 0%, var(--navy-light) 0%, transparent 55%),
-    linear-gradient(180deg, var(--navy-mid) 0%, var(--navy-dark) 100%);
   padding:36px 6% 20px;
 }
 
@@ -191,7 +189,7 @@ main.hero{
 
 /* ---------- Footer ---------- */
 footer{
-  background:#05080f;
+  background:#000000;
   border-top:1px solid var(--rule);
   padding:34px 6%;
 }

@@ -2,6 +2,14 @@ let currentLang = localStorage.getItem('lang') || 'es';
 
 const translations = {
     es: {
+        // text for general layout thingy
+        layout_inicio: "INICIO",
+        layout_acerca: "ACERCA DE",
+        layout_servicios: "SERVICIOS",
+        layout_oficinas: "OFICINAS",
+        layout_contacto: "CONTACTO",
+        layout_aviso: "AVISO DE PRIVACIDAD",
+        // text for index page
         index_title: "Compromiso con el cliente",
         index_info1: "En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.",
         index_info2: "Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.",
@@ -9,7 +17,15 @@ const translations = {
         index_info3: "This is supposed to be hidden",
     },
     en:{
+        layout_inicio: "MAIN",
+        layout_acerca: "ABOUT US",
+        layout_servicios: "SERVICES",
+        layout_oficinas: "OFFICES",
+        layout_contacto: "CONTACT",
+        layout_aviso: "PRIVACY",
+
         index_title: "CLIENT COMMITMENT:",
+
         index_info1: "At García Naranjo, González y Asociados, S.C., we recognize the immense value of our clients to the present and future success of our firm. Our main commitment to them, is the recognition and understanding of their specific developmental needs and requirements.",
         index_info2: "Our professional ethics always commit us to professional conduct of absolute integrity, in the pursuance of goals and purposes that we and our clients mutually establish and agree upon.",
         index_more: `Read more <span class="circle">▶</span>`,
@@ -58,12 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav>
         <div class="flags"><span onclick="setLang('es')" style="cursor:pointer">🇲🇽</span><span onclick="setLang('en')" style="cursor:pointer">🇺🇸</span></div>
         <div class="nav-divider"></div>
-        <a href="../index.html">Inicio</a>
-        <a href="../subpages/acerca.html">Acerca de</a>
-        <a href="../subpages/servicios.html">Servicios</a>
-        <a href="../subpages/oficinas.html">Oficinas</a>
-        <a href="../subpages/contactanos.html">Contacto</a>
-        <a href="../documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
+        <a data-i18n="layout_inicio" href="../index.html">Inicio</a>
+        <a data-i18n="layout_acerca" href="../subpages/acerca.html">Acerca de</a>
+        <a data-i18n="layout_servicios" href="../subpages/servicios.html">Servicios</a>
+        <a data-i18n="layout_oficinas" href="../subpages/oficinas.html">Oficinas</a>
+        <a data-i18n="layout_contact" href="../subpages/contactanos.html">Contacto</a>
+        <a data-i18n="layout_aviso"  href="../documents/aviso_privacidad.pdf" target="_blank" rel="noopener">Aviso de privacidad</a>
         </nav>
         <hr>`;
     }
