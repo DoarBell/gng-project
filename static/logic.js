@@ -33,6 +33,18 @@ const translations = {
     },
 };
 
+function next() {
+    const content1 = document.getElementById("sub-content1")
+    const content2 = document.getElementById("sub-content2")
+    if (content1.style.display === "none"){
+        content1.style.display = "block";
+        content2.style.display = "none";
+    } else {
+        content1.style.display = "none";
+        content2.style.display = "block";
+    }
+}
+
 function setLang(lang) {
     currentLang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {

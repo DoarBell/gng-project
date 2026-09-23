@@ -20,6 +20,44 @@ body{
   font-family:"Segoe UI", Arial, Helvetica, sans-serif;
 }
 
+.presentation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-copy.container {
+  height: 500px;         /* was min-height — now it never changes */
+  overflow: hidden;      /* prevents overflow from pushing layout if content's slightly too tall */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#sub-content1,
+#sub-content2{
+  width: 100%;
+}
+
+#sub-content2 p{
+  max-width: 900px;
+  margin: 0 auto 16px;
+}
+
+#sub-content1 img {
+  max-width: 100%;
+  max-height: 460px;   /* keep it inside your box */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.buttons{
+  display: flex;
+  gap: 16px;
+}
+
 .container{
   text-align: center;
 }
