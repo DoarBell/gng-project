@@ -339,4 +339,15 @@ footer{
     margin-left:auto;
     margin-right:auto;
   }
+
+  .hero-copy.container {
+    height: 600px;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 }
