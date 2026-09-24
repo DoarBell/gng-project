@@ -36,13 +36,21 @@ const translations = {
 function next() {
     const content1 = document.getElementById("sub-content1")
     const content2 = document.getElementById("sub-content2")
-    if (content1.style.display === "none"){
-        content1.style.display = "block";
-        content2.style.display = "none";
-    } else {
-        content1.style.display = "none";
-        content2.style.display = "block";
-    }
+    const shower = content1.style.display !== "none" ? content1 : content2;
+    const grower = shower === content1 ? content2 : content1;
+
+    shower.classList.remove("fadeIn");
+    shower.classList.add("fadeOut");
+
+    shower.addEventListener("animationend", function handler(){
+        shower.removeEventListener("animationend", handler);
+        shower.style.display = "none";
+        shower.classList.remove("fadeOut");
+       
+        grower.style.display = "block";
+        grower.classList.remove("fadeOut");
+        grower.classList.add("fadeIn");
+    })
 }
 
 function setLang(lang) {
