@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../static/logic.js"></script>
   </head>
   <body>
@@ -15,9 +17,20 @@
 
   </header>
 
-  <main class="container">
-    <div class="hero-copy">
+  <main>
+    <div class="hero-copier">
+      <div class="container">
         <h2>SERVICIOS QUE PROPORCIONA NUESTRA FIRMA</h1>
+          <select id="fromCurrency" class="currenSelector">
+
+          </select>
+          <select id="toCurrency" class="currenSelector">
+
+          </select>
+          <div class="chart-container">
+            <canvas id="myChart" style="width:100%;max-width:600px; justify-self:center;"></canvas>
+          </div>
+        </div>
     </div>
   </main>
 

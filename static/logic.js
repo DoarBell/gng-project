@@ -1,4 +1,5 @@
 let currentLang = localStorage.getItem('lang') || 'es';
+let chart;
 
 const translations = {
     es: {
@@ -34,8 +35,8 @@ const translations = {
 };
 
 function next() {
-    const content1 = document.getElementById("sub-content1")
-    const content2 = document.getElementById("sub-content2")
+    const content1 = document.getElementById("sub-content1");
+    const content2 = document.getElementById("sub-content2");
     const shower = content1.style.display !== "none" ? content1 : content2;
     const grower = shower === content1 ? content2 : content1;
 
@@ -74,6 +75,40 @@ function toggleText(){
         moreText.style.display = "none";
         btnText.innerHTML = translations[currentLang]["index_more"];
     }
+}
+
+function formatDate(d){
+    return d.toISOString().slice(0, 10);
+}
+
+async function loadChart() {
+    const base = document.getElementById("fromCurrency").value;
+    const quote = document.getElementById("toCurrency").value;
+    const today = new Date();
+    const tenDaysAgo = new Date();
+    tenDaysAgo.setDate(today.getDate()-10);
+    const url = `https://api.frankfurter.dev/v2/rates?base=${base}&quotes=${quote}&from=${formatDate(tenDaysAgo)}&to=${formatDate(today)}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const labels = data.map(row => row.date);
+    const values = data.map(row => row.rate);
+    const ctx = document.getElementById("myChart").getContext("2d");
+    if(chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `${base} to ${quote}`,
+                data: values,
+                borderColor: "#f7f7fb",
+                backgroundColor: "#1b10ea32",
+                borderWidth: 2,
+                tension: 0.2
+            }]
+        }
+    })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -130,5 +165,23 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     </div>`
-    }
+    document.getElementById("fromCurrency").addEventListener("change", loadChart);
+    document.getElementById("toCurrency").addEventListener("change", loadChart);
+    };
+
+    //api
+    const currencyDrop = document.querySelectorAll(".currenSelector")
+    fetch(`https://api.frankfurter.dev/v2/currencies`)
+    .then(response => response.json())
+    .then(currencies => {
+        const optionsHTML = currencies
+        .map(c => `<option value="${c.iso_code}">${c.name}</option>`)
+        .join("");
+        
+        currencyDrop.forEach(select => {
+            select.innerHTML = optionsHTML;
+        });
+
+        loadChart();
+    });
 });

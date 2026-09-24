@@ -27,6 +27,17 @@ body{
   align-items: center;
 }
 
+.hero-copier{
+  height: 500px;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .hero-copy.container {
   height: 500px;
   max-width: 700px;
@@ -56,6 +67,11 @@ body{
   margin: 0 auto;
 }
 
+#exchange_rates{
+  width: 100%;
+  max-width: 700px;
+}
+
 .buttons{
   position: absolute;
   top: 100%;
@@ -74,6 +90,14 @@ body{
 
 .container{
   text-align: center;
+}
+
+.chart-container{
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  margin: 0 auto;
 }
 
 /* ---------- Header ---------- */
@@ -153,6 +177,7 @@ main.hero{
   display:grid;
   grid-template-columns:minmax(220px,420px) 1fr;
   gap:6%;
+  align-content: center;
   align-items:center;
   max-width:1200px;
   margin:0 auto;
