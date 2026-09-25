@@ -208,6 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currencyDrop.forEach(select => {
             select.innerHTML = optionsHTML;
         });
+        
+        document.getElementById("fromCurrency").value = "USD";
+        document.getElementById("toCurrency").value = "MXN";
 
         loadChart();
     });
