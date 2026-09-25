@@ -1,39 +1,6 @@
 let currentLang = localStorage.getItem('lang') || 'es';
 let chart;
 
-const translations = {
-    es: {
-        // text for general layout thingy
-        layout_inicio: "INICIO",
-        layout_acerca: "ACERCA DE",
-        layout_servicios: "SERVICIOS",
-        layout_oficinas: "OFICINAS",
-        layout_contacto: "CONTACTO",
-        layout_aviso: "AVISO DE PRIVACIDAD",
-        // text for index page
-        index_title: "Compromiso con el cliente",
-        index_info1: "En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.",
-        index_info2: "Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.",
-        index_more: `Leer más <span class="circle">▶</span>`,
-        index_info3: "This is supposed to be hidden",
-    },
-    en:{
-        layout_inicio: "MAIN",
-        layout_acerca: "ABOUT US",
-        layout_servicios: "SERVICES",
-        layout_oficinas: "OFFICES",
-        layout_contacto: "CONTACT",
-        layout_aviso: "PRIVACY",
-
-        index_title: "CLIENT COMMITMENT:",
-
-        index_info1: "At García Naranjo, González y Asociados, S.C., we recognize the immense value of our clients to the present and future success of our firm. Our main commitment to them, is the recognition and understanding of their specific developmental needs and requirements.",
-        index_info2: "Our professional ethics always commit us to professional conduct of absolute integrity, in the pursuance of goals and purposes that we and our clients mutually establish and agree upon.",
-        index_more: `Read more <span class="circle">▶</span>`,
-        index_info3: "This is still supposed to be hidden",
-    },
-};
-
 function next() {
     const content1 = document.getElementById("sub-content1");
     const content2 = document.getElementById("sub-content2");
@@ -53,17 +20,6 @@ function next() {
         grower.classList.add("fadeIn");
     })
 }
-
-function setLang(lang) {
-    currentLang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            el.innerHTML=translations[lang][key];
-        }
-    });
-    localStorage.setItem('lang', lang);
-};
 
 function toggleText(){
     const moreText = document.getElementById("more-text");
@@ -169,7 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("toCurrency").addEventListener("change", loadChart);
     };
 
-    //api
+    //translation api
+    
+
+    //currency api
     const currencyDrop = document.querySelectorAll(".currenSelector")
     fetch(`https://api.frankfurter.dev/v2/currencies`)
     .then(response => response.json())
