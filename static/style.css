@@ -67,9 +67,12 @@ body{
   margin: 0 auto;
 }
 
-#exchange_rates{
+#myChart{
   width: 100%;
-  max-width: 700px;
+}
+
+.ex_chart{
+  padding-top: 30px;
 }
 
 .buttons{
@@ -247,6 +250,10 @@ main.hero{
 .read-more:hover .circle{
   background:var(--text-light);
   color:var(--navy-dark);
+}
+
+.spacing{
+  padding: 50px;
 }
 
 /* ---------- Footer ---------- */
