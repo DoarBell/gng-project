@@ -50,10 +50,13 @@ const translations = {
         contact_mail: "Correo electrónico",
         contact_message: "Mensaje",
         contact_send: "Enviar",
+        contact_name_ph: "Tu nombre",
+        contact_mail_ph: "tucorreo@ejemplo.com",
+        contact_message_ph: "¿En qué podemos ayudarte?",
         //text for notice
         notice_title: "Aviso de privacidad",
         notice_warning: "Tu navegador no soporta PDFs",
-        notice_download: "Descarga el PDF",
+        notice_download: `<button type="button" class="btn btn-primary">Descarga el PDF</button>`,
     },
     en:{
         layout_inicio: "MAIN",
@@ -75,7 +78,7 @@ const translations = {
         index_info5: "We honor the timelines, agreements, and commitments made with each client, convinced that trust is built through consistent actions and not just words. This is the standard that guides our daily work at García Naranjo, González & Asociados, S.C.",
 
         layout_ofice: "Offices",
-        layout_conmut: "Switchboard",
+        layout_Conmut: "Switchboard",
         layout_con: "Contact",
         //text for acerca
         acerca_who: "WHO ARE WE?",
@@ -104,10 +107,13 @@ const translations = {
         contact_mail: "Email",
         contact_message: "Message",
         contact_send: "Send",
+        contact_name_ph: "Your name",
+        contact_mail_ph: "youremail@example.com",
+        contact_message_ph: "How can we help you?",
         //text for notice
         notice_title: "Privacy Notice",
         notice_warning: "Your browser does not support PDFs",
-        notice_download: "Download the PDF",
+        notice_download: `<button type="button" class="btn btn-primary">PDF Download</button>`,
     },
 };
 
@@ -140,6 +146,13 @@ function setLang(lang) {
         }
     });
     localStorage.setItem('lang', lang);
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (translations[lang][key]) {
+        el.setAttribute("placeholder", translations[lang][key]);
+    }
+    });
 };
 
 function toggleText(){
