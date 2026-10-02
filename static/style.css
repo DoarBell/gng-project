@@ -91,6 +91,10 @@ body{
   font-weight: 500;
 }
 
+.currenSelector{
+  cursor:pointer;
+}
+
 #contact-status.success { color: #198754; }
 #contact-status.error   { color: #dc3545; }
 

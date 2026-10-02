@@ -131,12 +131,17 @@
             Administracion
           </div>
         </div>
-        <select id="fromCurrency" class="currenSelector">
 
-        </select>
-        <select id="toCurrency" class="currenSelector">
-
-        </select>
+        <div class="row g-2 mx-auto mb-3" style="max-width: 600px;">
+          <div class="col-6">
+            <select id="fromCurrency" class="form-select currenSelector"></select>
+          </div>
+          <div class="col-6">
+            <select id="toCurrency" class="form-select currenSelector"></select>
+          </div>
+        </div>
+        
+        
         <div class="chart-container">
           <canvas id="myChart" style="width:100%;max-width:600px; justify-self:center;"></canvas>
         </div>
