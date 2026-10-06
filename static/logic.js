@@ -1,8 +1,14 @@
 let currentLang = localStorage.getItem('lang') || 'es';
 let chart;
 
+//  Si ves esto y estas trabajando con gng hasles firmar primero 
+//  un acuerdo de cuanto van a pagarte antes de nada, habiamos accordado
+//  un precio y al final no me pagaron lo que se devia, tuve que aceptar al final,
+//  no cometas el mmismo error que yo.
+
 const translations = {
     es: {
+        sendbtn: "Enviar",
         // text for general layout thingy
         layout_inicio: "INICIO",
         layout_acerca: "ACERCA DE",
@@ -14,6 +20,7 @@ const translations = {
         index_title: "Compromiso con el cliente",
         index_info1: "En García Naranjo, González &amp; Asociados, S. C., reconocemos el inmenso valor de nuestros clientes y el papel preponderante que desempeñan en el éxito presente y futuro de nuestra firma. Nuestro mayor compromiso con ellos, es el conocer, comprender y satisfacer sus necesidades y requerimientos específicos para contribuir al aumento de su productividad.",
         index_info2: "Nuestra ética profesional, nos compromete en todo momento a conducir nuestras prácticas de negocios con el principio básico de integridad absoluta en todas las actividades que realizamos y el cumplimiento con los objetivos y compromisos que mutuamente nos imponemos y pactamos.",
+        index_more: `Leer más <span class="circle">▶</span>`,
         index_info3: "Este compromiso se refleja en cada una de nuestras prácticas de trabajo. Dedicamos el tiempo necesario para conocer a fondo el contexto, la operación y los objetivos particulares de cada cliente, lo que nos permite ofrecer soluciones a la medida y no respuestas genéricas.",
 
         index_info4: "Mantenemos a nuestro equipo en constante actualización profesional, a fin de brindar una asesoría vigente frente a los cambios normativos, fiscales y legales que puedan impactar a nuestros clientes. Asimismo, resguardamos con absoluta confidencialidad la información que nos confían, y procuramos una comunicación clara y oportuna en cada etapa de los proyectos que emprendemos en conjunto.",
@@ -57,8 +64,15 @@ const translations = {
         notice_title: "Aviso de privacidad",
         notice_warning: "Tu navegador no soporta PDFs",
         notice_download: `<button type="button" class="btn btn-primary">Descarga el PDF</button>`,
+        //text for footer
+        footer1: "Confianza",
+        footer2: "Responsabilidad",
+        footer3: "Profesionalismo",
+        footer4: "GNG no solo esta en México",
+
     },
     en:{
+        sendbtn: "Send",
         layout_inicio: "MAIN",
         layout_acerca: "ABOUT US",
         layout_servicios: "SERVICES",
@@ -114,6 +128,11 @@ const translations = {
         notice_title: "Privacy Notice",
         notice_warning: "Your browser does not support PDFs",
         notice_download: `<button type="button" class="btn btn-primary">PDF Download</button>`,
+        //text for footer
+        footer1: "Trust",
+        footer2: "Responsibility",
+        footer3: "Professionalism",
+        footer4: "GNG is not only in Mexico",
     },
 };
 
@@ -223,68 +242,69 @@ async function loadChart() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById("contact-form");
-    if (!form) return;
-    const btn = document.getElementById("contact-btn");
-    const status = document.getElementById("contact-status");
-    form.addEventListener("submit", async (e) =>{
-        e.preventDefault();
-        status.className = "";
-        status.textContent= "";
+    if (form) {
+        const btn = document.getElementById("contact-btn");
+        const status = document.getElementById("contact-status");
+        form.addEventListener("submit", async (e) =>{
+            e.preventDefault();
+            status.className = "";
+            status.textContent= "";
 
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        btn.disabled = true;
-        const originalText = btn.textContent;
-        btn.textContent = "Enviando.....";
-
-        try {
-            const response = await fetch(form.action, {
-                method: "POST",
-                body: new FormData(form),
-                headers: { Accept: "application/json"} 
-            });
-
-            if(response.ok){
-                status.textContent = "Gracias, tu mensaje fue enviado correctamente.";
-                status.className = "success";
-                form.reset();
-            } else {
-                throw new Error("Server error");
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
             }
-        } catch (err) {
-            status.textContent = "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo"
-            status.className = "error";
-        } finally {
-            btn.disabled = false;
-            btn.textContent = originalText;
-        }
-    })
 
-    const more = document.getElementById("more-text");
-    if (more) {
-        more.style.display = 'none';
-    }
-    document.getElementById("fromCurrency").addEventListener("change", loadChart);
-    document.getElementById("toCurrency").addEventListener("change", loadChart);
-    //api
-    const currencyDrop = document.querySelectorAll(".currenSelector")
-    fetch(`https://api.frankfurter.dev/v2/currencies`)
-    .then(response => response.json())
-    .then(currencies => {
-        const optionsHTML = currencies
-        .map(c => `<option value="${c.iso_code}">${c.name}</option>`)
-        .join("");
-        
-        currencyDrop.forEach(select => {
-            select.innerHTML = optionsHTML;
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = "Enviando.....";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: { Accept: "application/json"} 
+                });
+
+                if(response.ok){
+                    status.textContent = "Gracias, tu mensaje fue enviado correctamente.";
+                    status.className = "success";
+                    form.reset();
+                } else {
+                    throw new Error("Server error");
+                }
+            } catch (err) {
+                status.textContent = "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo"
+                status.className = "error";
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
         });
-        
-        document.getElementById("fromCurrency").value = "USD";
-        document.getElementById("toCurrency").value = "MXN";
+    }
 
-        loadChart();
-    });
+    if (document.getElementById("fromCurrency")) {
+        
+        document.getElementById("fromCurrency").addEventListener("change", loadChart);
+        document.getElementById("toCurrency").addEventListener("change", loadChart);
+        //api
+        const currencyDrop = document.querySelectorAll(".currenSelector")
+        fetch(`https://api.frankfurter.dev/v2/currencies`)
+        .then(response => response.json())
+        .then(currencies => {
+            const optionsHTML = currencies
+            .map(c => `<option value="${c.iso_code}">${c.name}</option>`)
+            .join("");
+            
+            currencyDrop.forEach(select => {
+                select.innerHTML = optionsHTML;
+            });
+            
+            document.getElementById("fromCurrency").value = "USD";
+            document.getElementById("toCurrency").value = "MXN";
+
+            loadChart();
+        });
+
+    }
 });
